@@ -1,0 +1,6 @@
+.flash{animation:light 1s infinite;}
+
+@-webkit-keyframes light { 0% { opacity: 0; } 25% { opacity: 0; } 26% { opacity: 1; } 75% { opacity: 1; } 76% { opacity: 0; } 100% { opacity: 0; } } 
+@-moz-keyframes light { 0% { opacity: 0; } 25% { opacity: 0; } 26% { opacity: 1; } 75% { opacity: 1; } 76% { opacity: 0; } 100% { opacity: 0; } } 
+@-o-keyframes light { 0% { opacity: 0; } 25% { opacity: 0; } 26% { opacity: 1; } 75% { opacity: 1; } 76% { opacity: 0; } 100% { opacity: 0; } } 
+@keyframes light { 0% { opacity: 0; } 25% { opacity: 0; } 26% { opacity: 1; } 75% { opacity: 1; } 76% { opacity: 0; } 100% { opacity: 0; } } 

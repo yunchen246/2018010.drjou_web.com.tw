@@ -1,0 +1,65 @@
+
+    /* .reload{display: none;} */
+
+    body{background: url(../images/img_bg_body.png)center top repeat-x;
+    background-color:#b9cde4;}
+
+    /* .full{width: 100%;} */
+    .inner-block{width: 1000px; left: 50%; margin-left: -500px;}
+
+    #wrapper{
+        width: 100%;
+        /* background: url(images/img_bg_wrapper.png)center top no-repeat; */
+    }
+    #header{background: url(../images/img_header.png)center top no-repeat;}
+    #header{height: 660px;}
+
+    .logo{top: 20px; left: 13px; width: 73px; height: 90px; background: url(../images/img_logo.png)center top no-repeat;}
+    .fb{top: 20px; left: 84px; width: 32px; height: 32px; background: url(../images/img_fb.png)center top no-repeat;}
+
+    #container{text-align: center;}
+    .content1{background: url(../images/img_content_03.png)center top no-repeat;}
+    .content2{background: url(../images/img_content_04.png)center top no-repeat;}
+	  .content3{background: url(../images/img_content_05.png)center top no-repeat;}
+	  .content4{background: url(../images/img_content_06.png)center top no-repeat;}
+
+
+    .content1 .inner-block{height: 1006px;}
+    .content2 .inner-block{height: 1108px;}
+    .content3 .inner-block{height: 1560px;}
+	  .content4 .inner-block{height: 1215px;}
+
+
+    #container .inner-block .btn{}
+    .content1 .inner-block .btn1{margin-top:0px; width:1000px; height:1006px;
+     background: url(../images/btn/btn_03.gif)center top no-repeat;
+     /*border:#0000FF 1px solid;*/ display:inline-block;}
+
+
+    .content2 .inner-block .btn1{ margin-bottom:0px; width:1000px; height: 1108px;
+     background: url(../images/btn/btn_04.gif)center top no-repeat; display:inline-block;
+   /*border:#0000FF 1px solid;*/}
+
+
+    .content3 .inner-block .btn1{margin-bottom:0px; width:1000px; height:1560px;
+     background: url(../images/btn/btn_05.gif)center top no-repeat; display:inline-block;
+    /*border:#0000FF 1px solid;*/}
+
+    .content4 .inner-block .btn1{margin-bottom:0px; width:1000px; height: 1215px;
+     background: url(../images/btn/btn_06.gif)center top no-repeat; display:inline-block;
+  /*border:#0000FF 1px solid;*/}
+
+
+    #footer{
+        width: 100%;
+        font-size: 11pt;
+        color: #666;
+        text-align: center;
+        /* height: 50px;
+        padding: 20px 0; */
+        padding: 2px 0;
+        background-color:#c3e4f3;
+        /*background: url(images/img_bg_footer.png);*/
+    }
+
+    .copyright{width: 100%; bottom: 0; padding-top: 3px; padding-bottom: 3px;}

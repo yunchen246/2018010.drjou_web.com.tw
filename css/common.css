@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+*{margin: 0; padding: 0;}
+
+html, body{font-size: 100%; font-size: 0;}
+
+body{font-family:'微軟正黑體', '新細明體', 'Arial';/*  font-size: 0; */}
+
+/* 等候下載頁面 */
+#loading-page{position:fixed; width:100%; height:100%; z-index:99999; background:none repeat scroll 0 0 #fff;}
+.loading-anime{
+    /* width: 400px;
+    height: 300px; */
+    left: 50%;
+    top: 40%;
+    margin-left: -200px;
+    margin-top: -150px;
+    position: absolute;
+    z-index: 9999;
+}
+
+
+/* 表單文字設定 */
+.table{font-size: 12pt;}
+
+/* blockUI */
+#isOpenLogin{font-size: 12pt;}
+
+ul, li, ol{list-style: none;}
+
+a{text-decoration:none;}
+
+.rotate{display: none;}
+.rotate>img{width: 100%;}
+
+.loading-img{display: none;}
+
+.border{border: #111 1px solid;}
+.border-white{border: #FFF 1px solid;}
+.btn{cursor: pointer;}
+
+/* img */
+img{border: 0;}
+
+.img-w{width: 100%;}
+.img-h{width: 100%;}
+.img-center{margin: 0 auto;}
+
+/* PC - smartPhone */
+.on{display: block;}
+.off{display: none;}
+
+/* clear */
+.clear-b{clear: both;}
+
+
+.scroll-y{overflow-y: scroll;}
+.scroll-x{overflow-x: scroll;}
+.scroll{overflow: scroll;}
+
+
+.db{display: block;}
+.di{display: inline;}
+.dib{display: inline-block;}
+
+
+.pr{position: relative;}
+.pf{position: fixed;}
+
+
+
+.fl{ float:left; }
+.fr{ float:right; }
+

@@ -1,0 +1,298 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Reddo's Excel 物件使用說明</title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery.treeview.js"></script>
+<script type="text/javascript" src="jquery.cookie.js"></script>
+<link type="text/css" rel="stylesheet" href="jquery.treeview.css" />
+<style>
+	html,body{
+		margin:0;
+		text-align:center;
+}
+	a:link,a:visited{
+		text-decoration:none;
+		color:blue;
+	}
+	a:hover{
+		color:red;
+	}
+	#container{
+		position:relative;
+		margin-top:20px;
+		width:1000px;
+		text-align:left;
+	}
+	#container div{
+		float:left;
+	}
+	#menu{
+		margin:10px 20px 0 0;
+		min-height:500px;
+		height: auto !important;
+		height: 500px; 
+		min-width:220px;
+		width:auto !important;
+		width:220px;
+	}
+	#content{
+		border:solid #111111 1px;
+		min-height:500px;
+		height: auto !important;
+		height: 500px; 
+		min-width:715px;
+		width:auto !important;
+		width:715px;
+		padding:20px;
+	}
+	#content ul,#content li{
+		list-style-type:none;
+	}
+	#content div p{color:#208280;}
+</style>
+</head>
+<body>
+<h2 align="center" style="margin-top:20px;">Reddo's Excel 物件使用說明</h2>
+<div id="container">
+	<div id="menu">
+		<ul id="tree" class="filetree">
+			<li class="treeview-famfamfam"><span class="folder">使用範例</span>
+				<ul>
+					<li><span class="file"><a href="basic">必要配置及注意事項</a></span></li>
+					<li><span class="file"><a href="demo">實際範例</a></span></li>
+				</ul>
+			</li>
+			<li class="treeview-famfamfam"><span class="folder">API</span>
+				<ul>
+					<li><span class="folder">操作類</span>
+						<ul>
+							<li><span class="file"><a href="assign_folder">設定暫存資料夾</a></span></li>
+							<li><span class="file"><a href="set_merge_grid">合併欄位</a></span></li>
+							<li><span class="file"><a href="write">寫入欄位值</a></span></li>
+							<li><span class="file"><a href="insert_header">陣列寫入表頭</a></span></li>
+							<li><span class="file"><a href="insert_body">陣列寫入表身</a></span></li>
+							<li><span class="file"><a href="output">輸出Excel檔案</a></span></li>
+						</ul>
+					</li>
+					<li><span class="folder">工作表類</span>
+						<ul>
+							<li><span class="file"><a href="select_sheet">切換目前工作表</a></span></li>
+							<li><span class="file"><a href="set_sheet_name">設定目前工作表名稱</a></span></li>
+							<li><span class="file"><a href="set_readonly">設定目前工作表唯讀</a></span></li>
+						</ul>
+					</li>
+					<li><span class="folder">樣式類</span>
+						<ul>
+							<li><span class="file"><a href="set_font_style">設置字型</a></span></li>
+							<li><span class="file"><a href="set_font_size">設置字型大小</a></span></li>
+							<li><span class="file"><a href="set_cols_width">設置欄位寬度</a></span></li>
+							<li><span class="file"><a href="set_border">套用框線</a></span></li>
+							<li><span class="file"><a href="set_grid_align">儲存格置中</a></span></li>
+							<li><span class="file"><a href="set_text_align">儲存格文字置中</a></span></li>
+							<li><span class="file"><a href="set_font_blod">設置粗體</a></span></li>
+							<li><span class="file"><a href="set_font_color">設置字體顏色</a></span></li>
+							<li><span class="file"><a href="set_grid_bgcolor">設定儲存格背景色</a></span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="content">
+	
+		<div class="post" id="basic">
+			<h3>必要配置及注意事項</h3>
+			<p>1.複製整個 phpexcel 資料夾準備使用.</p>
+			<p>2.引入物件 include('/phpexcel/excel.php'); (建議使用絕對路徑)</p>
+			<p>3.於使用頁面建立物件 $excel=new Excel();</p>
+			<p>4.指定你想用來暫存的資料夾 $excel->assign_folder(/phpexcel/excel_temp); (建議使用絕對路徑)</p>
+			<p>5.資料夾將會自動建立,Linux 環境的使用者如果該資料夾權限非為 777,請自行調整.</p>
+			<p>6.預設超過十分鐘的暫存檔將會被清除.</p>
+		</div>
+		
+		<div class="post" id="demo">
+			<h3>實際範例 demo.php</h3>
+			<p>include('/phpexcel/excel.php');</p>
+			<p>$excel=new excel();</p>
+			<p>$excel->set_sheet_name('新測試工作表');<font color="green">//預設為 分頁一,分頁二...</font></p>
+			<p>$header=array('姓名','電話','住址');<font color="green">//設定單頭資料</font></p>
+			<p>$body[0]=array('紅豆桑','09xx-xxx-xxx','測試街測試號');<font color="green">//設定單身資料</font></p>
+			<p>$body[1]=array('綠豆桑','04-2278xxxx','Demo街Demo號');<font color="green">//以此陣列規則來設置多筆單身資料</font></p>
+			<p>$excel->insert_header($header);<font color="green">//直接將陣列資料寫入Excel Sheet,作為單頭</font></p>
+			<p>$excel->insert_body($body);<font color="green">//寫入單身</font></p>
+			<p>$excel->output();<font color="green">//在目前頁面輸出請求下載的 Excel 結果</font></p>
+		</div>
+		
+		<div class="post" id="assign_folder">
+			<h3>assign_folder($folder_path)</h3>
+			<p>設定 Excel 輸出時的暫存資料夾,此項目為必需動作。</p>
+			<p>預設會自動清除超過十分鐘的暫存檔.</p>
+			<p>$folder_path 需使用絕對路徑,如 /test,/temp_folder</p>
+			<p>例：$excel->assign_folder('/excel/temp_folder');</p>
+			<p>則會將暫存檔置於根目錄底下的指定位置,不需要先建資料夾,</p>
+			<p>但 Linux 環境權限請自行確認是否已設定為 777,否則將無法自行清除逾時檔案.</p>
+		</div>
+		
+		<div class="post" id="select_sheet">
+			<h3>select_sheet($sheet_id)</h3>
+			<p>切換並新建目前操作的工作表,當建立物件時,</p>
+			<p>建構子已經自動執行 select_sheet(0);</p>
+			<p>故建立物件後不需要再執行此句,</p>
+			<p>如果需要操作第二個工作表時，如下例：</p>
+			<p>$excel->select_sheet(1);</p>
+			<p>$excel->select_sheet(2);</p>
+			<p>select 哪一個表，那麼其他 API 的功能均會作用在當前的 Sheet 上.</p>
+		</div>
+		
+		<div class="post" id="set_sheet_name">
+			<h3>set_sheet_name($name)</h3>
+			<p>預設 Lib 產生的 Sheet Name 為：分頁一、分頁二…</p>
+			<p>如需更改目前 Sheet 的名稱,如下例：</p>
+			<p>$excel->set_sheet_name('測試工作表')</p>
+		</div>
+		
+		<div class="post" id="set_readonly">
+			<h3>set_readonly($var[參數可選])</h3>
+			<p>將目前 select 的工作表設置為唯讀,</p>
+			<p>$excel->set_readonly();<font color="green">//唯讀</font></p>
+			<p>$excel->set_readonly(false);<font color="green">//取消唯讀</font></p>
+		</div>
+		
+		<div class="post" id="set_font_style">
+			<h3>set_font_style($font_style,$var1,$var2[參數可選])</h3>
+			<p>Lib 預設所有字型為新細明體,如須修改指定儲存格字型如下二例：</p>
+			<p>$excel->set_font_style('微軟正黑體','A1');</p>
+			<p>$excel->set_font_style('微軟正黑體',0,1);</p>
+			<p>上二例均會把 A1 儲存格字型改為微軟正黑體.</p>
+		</div>
+		
+		<div class="post" id="set_font_size">
+			<h3>set_font_size($size,$var1,$var2[可選])</h3>
+			<p>Lib 預設所有字型大小為12pt,如須修改指定儲存格字型大小如下二例：</p>
+			<p>$excel->set_font_size(16,'A1');</p>
+			<p>$excel->set_font_size(16,0,1);</p>
+			<p>上二例均會把 A1 儲存格字型大小改為16pt.</p>
+		</div>
+		
+		<div class="post" id="set_cols_width">
+			<h3>set_cols_width($width,$cols)</h3>
+			<p>Lib 預設所有欄位寬度為20,如須修改指定儲存格欄位寬度如下：</p>
+			<p>$excel->set_cols_width(30,'A');</p>
+			<p>上二例均會把 A 儲存格欄寬設為30px.</p>
+		</div>
+		
+		<div class="post" id="set_border">
+			<h3>set_border($var1,$var2[可選])</h3>
+			<p>Lib 預設當寫入資料後,會自動設置框線,如需手動設置框線如下二例：</p>
+			<p>$excel->set_border('A1');</p>
+			<p>$excel->set_border(0,1);</p>
+			<p>上二例均會把 A1 儲存格添加框線.</p>
+		</div>
+		
+		<div class="post" id="set_grid_align">
+			<h3>set_grid_align($var1,$var2[可選])</h3>
+			<p>使用此函式可將指定儲存格置中,如下二例：</p>
+			<p>$excel->set_grid_align('A1');</p>
+			<p>$excel->set_grid_align(0,1);</p>
+			<p>上二例均會把 A1 儲存格設定置中.</p>
+		</div>
+		
+		<div class="post" id="set_text_align">
+			<h3>set_text_align($var1,$var2[可選])</h3>
+			<p>使用此函式可將指定儲存格內文字置中,如下二例：</p>
+			<p>$excel->set_text_align('A1');</p>
+			<p>$excel->set_text_align(0,1);</p>
+			<p>上二例均會把 A1 儲存格內文字設定置中.</p>
+		</div>
+		
+		<div class="post" id="set_font_blod">
+			<h3>set_font_blod($var1,$var2[可選])</h3>
+			<p>使用此函式可將指定儲存格內文字設定為粗體,如下二例：</p>
+			<p>$excel->set_font_blod('A1');</p>
+			<p>$excel->set_font_blod(0,1);</p>
+			<p>上二例均會把 A1 儲存格內文字設定為粗體.</p>
+		</div>
+		
+		<div class="post" id="set_font_color">
+			<h3>set_font_color($color,$var1,$var2[可選])</h3>
+			<p>使用此函式可設定儲存格內文字顏色,如下二例：</p>
+			<p>$excel->set_font_color('CCCCCC','A1');</p>
+			<p>$excel->set_font_color('CCCCCC',0,1);</p>
+			<p>上二例均會把 A1 儲存格內文字設定為 RGB #CCCCCC.</p>
+		</div>
+		
+		<div class="post" id="set_grid_bgcolor">
+			<h3>set_grid_bgcolor($color,$var1,$var2[可選])</h3>
+			<p>使用此函式可設定儲存格背景色,如下二例：</p>
+			<p>$excel->set_grid_bgcolor('CCCCCC','A1');</p>
+			<p>$excel->set_grid_bgcolor('CCCCCC',0,1);</p>
+			<p>上二例均會把 A1 儲存格背景色設定為 RGB #CCCCCC.</p>
+		</div>
+		
+		<div class="post" id="set_merge_grid">
+			<h3>set_merge_grid($var1,$var2,$auto[可選])</h3>
+			<p>使用此函式合併儲存格,$auto 參數決定是否自動文字及儲存格置中：</p>
+			<p>$excel->set_merge_grid('A1','D3');<font color="green">//自動置中</font></p>
+			<p>$excel->set_merge_grid('A1','D3');<font color="green">//不自動置中</font></p>
+			<p>上二例均會把 A1-D3 儲存格合併.</p>
+		</div>
+		
+		<div class="post" id="write">
+			<h3>write($data,$var1,$var2[可選])</h3>
+			<p>將資料寫入指定儲存格,兩種用法：</p>
+			<p>$excel->write('我是好人','A1');</p>
+			<p>$excel->write('我是好人',0,1);</p>
+			<p>上二例均會把「我是好人」填入 A1 儲存格.</p>
+		</div>
+		
+		<div class="post" id="insert_header">
+			<h3>insert_header($data,$row[可選])</h3>
+			<p>將陣列資料依序橫向寫入儲存格,兩種用法：</p>
+			<p>$data=array('產品編號','產品名稱','價格');</p>
+			<p>$excel->insert_header($data);<font color="green">//在第一列(A1,B1,C1)依序寫入陣列值.</font></p>
+			<p>$excel->insert_header($data,3);<font color="green">//在第三列(A3,B3,C3)依序寫入陣列值.</font></p>
+		</div>
+		
+		<div class="post" id="insert_body">
+			<h3>insert_body($data,$row[可選])</h3>
+			<p>將陣列資料依序橫向寫入儲存格,兩種用法：</p>
+			<p>$data[0]=array('0001','香蕉','100');</p>
+			<p>$data[1]=array('0002','蓮霧','200');</p>
+			<p>$excel->insert_body($data);<font color="green">//由第二列開始(A2,B2,C2)依序寫入陣列值,之後寫下一列(A3,B3,C3)</font></p>
+			<p>$excel->insert_body($data,5);<font color="green">//由第五列開始(A5,B5,C5)依序寫入陣列值,之後寫下一列(A6,B6,C6)</font></p>
+		</div>
+		
+		<div class="post" id="output">
+			<h3>output($type[可選]);</h3>
+			<p>存檔並輸出結果,</p>
+			<p>$excel->output();<font color="green">//直接在頁面輸出檔案給使用者下載</font></p>
+			<p>$excel->output('url');<font color="green">//傳回下載連結</font></p>
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#tree').treeview({
+		persist:'cookie',
+		collapsed:true,
+		unique:true
+	});
+	$('.post').hide();
+	$('a').click(function(){
+		var href_id=$(this).attr('href');
+		$('#content div').each(function(){
+			if($(this).attr('id')==href_id){
+				$(this).show();
+			}
+			else{
+				$(this).hide();
+			}
+		});
+		return false;
+	});
+});
+</script>
